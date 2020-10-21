@@ -32,3 +32,14 @@ export async function deleteUser(req:Request, res: Response): Promise<Response>{
         message: 'Usuario Eliminado'
     });
 }
+
+export async function updateUser(req:Request, res: Response): Promise<Response>{
+    const id = req.params.postId;
+    const updateUser: User = req.body;
+    const conn = await connect();
+    await conn.query('UPDATE register set ? WHERE id = ?', [updateUser, id])
+    return res.json({
+        message: 'Usuario Actualizado'
+    });
+}
+
