@@ -16,3 +16,10 @@ export async function createUser(req:Request, res: Response) {
         message: 'Usuario Creado'
     });
 }
+
+export async function getUser(req:Request, res: Response): Promise<Response>{
+    const id = req.params.postId;
+    const conn = await connect();
+    const users = await conn.query('SELECT * FROM register WHERE id = ?', [id])
+    return res.json(users[0]);
+}
