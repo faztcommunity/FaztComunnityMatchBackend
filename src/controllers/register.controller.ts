@@ -23,3 +23,12 @@ export async function getUser(req:Request, res: Response): Promise<Response>{
     const users = await conn.query('SELECT * FROM register WHERE id = ?', [id])
     return res.json(users[0]);
 }
+
+export async function deleteUser(req:Request, res: Response): Promise<Response>{
+    const id = req.params.postId;
+    const conn = await connect();
+    await conn.query('DELETE FROM register WHERE id = ?', [id])
+    return res.json({
+        message: 'Usuario Eliminado'
+    });
+}
