@@ -1,11 +1,12 @@
 {
-  "name": "FaztComunnityMatchBackend",
+  "name": "fazt-comunnity-match-backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "dev": "nodemon src/index.ts --exec ts-node"
+    "dev": "nodemon src/index.ts --exec ts-node",
+    "start": "cd src && ts-node index.ts"
   },
   "repository": {
     "type": "git",

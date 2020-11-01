@@ -5,7 +5,7 @@ CREATE TABLE register(
     name VARCHAR(20) NOT NULL,
     lastname VARCHAR(20) NOT NULL,
     email VARCHAR(50) NOT NULL,
-    password VARCHAR(20) NOT NULL
-    created_at TIMESTAMP DEFAULT CURRENT_TIME
+    password VARCHAR(20) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIME,
+    last_update TIMESTAMP DEFAULT NULL
 );
-
