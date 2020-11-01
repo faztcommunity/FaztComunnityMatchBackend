@@ -26,7 +26,7 @@ export default class App {
 
   private routes() {
     this.app.use(IndexRoutes);
-    this.app.use('/register', RegisterRoutes);
+    this.app.use('/users', RegisterRoutes);
   };
   
   public listen() {
