@@ -1,13 +1,13 @@
-import {createPool} from 'mysql2/promise'
+import { createPool } from 'mysql2/promise'
 
-export async function connect() {
+export default function connect() {
 
-const connection = await createPool({
-    host: 'localhost',
-    user: 'root',
-    database: 'fazt_match',
-    connectionLimit: 10
-});
+    const connection = createPool({
+        host: 'localhost',
+        user: 'root',
+        database: 'fazt_match',
+        connectionLimit: 10
+    });
 
-return connection;
+    return connection;
 }
