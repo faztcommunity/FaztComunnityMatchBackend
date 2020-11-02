@@ -1,8 +1,9 @@
-import express, { Application } from 'express'
-import morgan from 'morgan'
+import express, { Application } from 'express';
+import morgan from 'morgan';
+import { Server } from "http";
 // Routes
-import IndexRoutes from '../src/routes/index.routes'
-import RegisterRoutes from '../src/routes/post.routes'
+import IndexRoutes from '../src/routes/index.routes';
+import RegisterRoutes from '../src/routes/post.routes';
 
 export class App {
 
@@ -29,8 +30,8 @@ export class App {
     this.app.use('/register', RegisterRoutes);
   }
 
-  public listen(callback: Function = () => { console.log(`Server on port ${this.app.get("port")}`) }) {
-    this.app.listen(this.app.get('port'), callback());
+  public listen(callback: Function = () => { console.log(`Server on port ${this.app.get("port")}`) }): Server {
+    return this.app.listen(this.app.get('port'), callback());
   }
 
 }
