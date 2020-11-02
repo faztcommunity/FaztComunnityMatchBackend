@@ -1,4 +1,4 @@
-import { createPool } from 'mysql2/promise'
+import { createPool } from 'mysql2/promise';
 
 export default function connect() {
 
@@ -10,4 +10,4 @@ export default function connect() {
     });
 
     return connection;
-}
+};
