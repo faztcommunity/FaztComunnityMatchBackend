@@ -1,37 +1,37 @@
-import express, { Application } from 'express'
-import morgan from 'morgan'
+import express, { Application } from 'express';
+import morgan from 'morgan';
+import { Server } from "http";
 // Routes
-import IndexRoutes from '../src/routes/index.routes'
-import RegisterRoutes from '../src/routes/post.routes'
+import IndexRoutes from '../src/routes/index.routes';
+import RegisterRoutes from '../src/routes/post.routes';
 
 export class App {
 
-   private app: Application;
+  private app: Application;
 
-constructor(private port?: number | string) {
+  public constructor(private port?: number | string) {
     this.app = express();
     this.settings();
     this.middlewares();
     this.routes();
-}
+  };
 
-settings(){
-    this.app.set('port', this.port || process.env.Port || 3000)
-}
+  private settings() {
+    this.app.set('port', process.env.PORT || this.port || 3000);
+  };
 
-middlewares() {
-  this.app.use(morgan('dev'));
-  this.app.use(express.json());
-}
+  private middlewares() {
+    this.app.use(morgan('dev'));
+    this.app.use(express.json());
+  };
 
-routes() {
-  this.app.use(IndexRoutes);
-  this.app.use('/register', RegisterRoutes);
-}
+  private routes() {
+    this.app.use(IndexRoutes);
+    this.app.use('/register', RegisterRoutes);
+  };
 
-async listen() {
-  await this.app.listen(this.app.get('port'));
-  console.log('Server on port', 3000)
-}
+  public listen(callback: Function = () => { console.log(`Server on port ${this.app.get("port")}`) }): Server {
+    return this.app.listen(this.app.get('port'), callback());
+  };
 
-}
+};
