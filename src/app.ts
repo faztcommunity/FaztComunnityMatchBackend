@@ -26,6 +26,14 @@ export class App {
     this.app.use(morgan('dev'));
     this.app.use(express.json());
     this.app.use(urlencoded({ extended: true }));
+    this.app.use((_req: Request, res: Response) => {
+        return res.status(404).send("this page doesn't exist");
+    });
+    this.app.use((err: ErrorRequestHandler, _req: Request, res: Response, next: NextFunction) => {
+        console.error(err);
+        res.status(500).send('Oh sh*t something broke');
+        next()
+    })
   };
 
   private routes() {
