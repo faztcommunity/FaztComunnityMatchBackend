@@ -1,6 +1,7 @@
-import express, { Application } from 'express';
+import express, { Application, Request, Response, ErrorRequestHandler, NextFunction } from 'express';
 import morgan from 'morgan';
 import { Server } from "http";
+import { urlencoded } from "body-parser";
 // Routes
 import IndexRoutes from '../src/routes/index.routes';
 import RegisterRoutes from '../src/routes/post.routes';
@@ -18,6 +19,7 @@ export class App {
 
   private settings() {
     this.app.set('port', process.env.PORT || this.port || 3000);
+    this.app.disable("x-powered-by");
   };
 
   private middlewares() {
