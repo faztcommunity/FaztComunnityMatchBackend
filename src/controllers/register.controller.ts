@@ -1,4 +1,4 @@
-import { query, Request, Response } from 'express'
+import { Request, Response } from 'express'
 import connect from '../database';
 import { User } from '../interface/IUser'
 
@@ -42,4 +42,3 @@ export async function updateUser(req: Request, res: Response): Promise<Response>
         message: 'Usuario Actualizado'
     });
 }
-
